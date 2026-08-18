@@ -1,0 +1,1 @@
+module.exports={content:['./app/**/*.{js,ts,jsx,tsx,mdx}','./components/**/*.{js,ts,jsx,tsx,mdx}'],theme:{extend:{colors:{bg:'#0F0F0E',surface:'#1A1A19',card:'#1F1F1E',accent:'#FF4E11',lime:'#E1FF00'}}},plugins:[]}
