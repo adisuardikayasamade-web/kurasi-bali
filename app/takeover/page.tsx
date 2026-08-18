@@ -1,0 +1,3 @@
+
+import WAButton from "@/components/WAButton"; import Link from "next/link";
+export default function Takeover(){ return (<main className="max-w-4xl mx-auto px-6 py-16 bg-[#0F0F0E] text-[#F5F1EB] min-h-screen"><Link href="/" className="text-xs opacity-40">← KURASI BALI</Link><h1 className="text-5xl font-black uppercase mt-6">KURASI<br/><span className="text-[#FF4E11]">TAKEOVER</span></h1><p className="mt-4 opacity-60">Divisi dari Kurasi Bali untuk solusi kredit macet. IG @takeoverkreditbali</p><div className="mt-10 bg-[#1A1A19] border border-white/10 rounded-[24px] p-8"><WAButton message="Halo Kurasi Takeover dari kurasibali.com/takeover" className="bg-[#FF4E11] text-black px-6 py-3 rounded-xl font-bold uppercase">WA Takeover 0851-5628-2660</WAButton></div></main>) }
