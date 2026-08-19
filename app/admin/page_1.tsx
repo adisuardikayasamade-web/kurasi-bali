@@ -1,14 +1,8 @@
 "use client"
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { supabase, DbListing } from "@/lib/supabase"
 
 export default function AdminPage() {
-  const router = useRouter()
-  useEffect(()=>{
-    const auth = localStorage.getItem('kurasibali_admin_auth')
-    if (auth !== 'true') router.push('/admin/login')
-  }, [])
   const [listings, setListings] = useState<DbListing[]>([])
   const [form, setForm] = useState<Partial<DbListing>>({
     id: "", type: "villa", title: "", location: "Badung, Bali", price: 1500000000, price_label: "Rp 1.5 Miliar", luas: "120 m²", kamar: "2 Kamar", sertifikat: "SHM", image: "/villa-bomba.webp", badge: "BARU", is_takeover: false, is_active: true
@@ -50,7 +44,7 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-[#FFFEFB] p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center"><h1 className="font-serif text-4xl">kurasibali.com <span className="text-[#C86B4A]">ADMIN</span></h1><button onClick={()=>{localStorage.removeItem('kurasibali_admin_auth'); window.location.href='/admin/login'}} className="text-xs px-4 py-2 rounded-full border">Logout</button></div>
+        <h1 className="font-serif text-4xl">kurasibali.com <span className="text-[#C86B4A]">ADMIN</span></h1>
         <p className="text-sm text-zinc-500 mt-2">Tambah/edit properti dari HP. Langsung live di website.</p>
 
         <div className="mt-8 grid lg:grid-cols-[380px_1fr] gap-8">
