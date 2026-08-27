@@ -1,0 +1,15 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FFFBF5;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: #FFFBF5;
+  color: #121212;
+  -webkit-font-smoothing: antialiased;
+}
+* { scrollbar-width: thin; }
