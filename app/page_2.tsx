@@ -26,18 +26,18 @@ const koleksi = [
     id: 0,
     lokasi: "A.Yani Utara • Denpasar",
     title: "Rumah Siap Huni A.Yani Utara",
-    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - HANYA 1 UNIT",
-    luas: "LT 100m² / LB 65m²",
-    sisaKredit: "3KT • 1KM • Hadap Utara",
-    cicilan: "Siap Huni",
+    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - DIJUAL HANYA 1 UNIT",
+    luas: "LT 100m² / LB 65m² • 3KT • 1KM",
+    sisaKredit: "Siap Huni • Hadap Utara",
+    cicilan: "Akses 4,5m • Listrik 1300W",
     takeover: "Rp 985 Jt",
     priceNote: "Belum termasuk BPHTB & BBN",
     tags: ["SHM", "Siap Huni", "3 Kamar"],
-    discount: "HANYA 1 UNIT !!",
+    discount: "HANYA 1 UNIT ‼",
     grad: "from-[#FFFBEB] to-[#FEF3C7]",
     image: "/griyaelok-1.webp",
     image2: "/griyaelok-2.webp",
-    specs: ["1 Lantai", "Ruang Keluarga", "Dapur", "Carport", "Air Sumur", "Listrik 1300W", "Akses 4,5m"],
+    specs: ["1 Lantai", "Ruang Keluarga", "Dapur", "Carport", "Air Sumur"],
   },
   {
     id: 1,
@@ -50,7 +50,6 @@ const koleksi = [
     tags: ["SHM", "PBG", "SLO"],
     discount: "-32% bawah pasar",
     grad: "from-[#FFEDD5] to-[#FED7AA]",
-    image: "/villa-bomba.webp",
   },
   {
     id: 2,
@@ -63,7 +62,6 @@ const koleksi = [
     tags: ["SHM", "PBG"],
     discount: "-28% bawah pasar",
     grad: "from-[#DCFCE7] to-[#BBF7D0]",
-    image: "/villa-ubud.webp",
   },
   {
     id: 3,
@@ -76,7 +74,6 @@ const koleksi = [
     tags: ["SHM", "Pondok Wisata"],
     discount: "-41% bawah pasar",
     grad: "from-[#DBEAFE] to-[#BFDBFE]",
-    image: "/tanah-bingin.webp",
   },
 ];
 
@@ -390,12 +387,11 @@ export default function App() {
 
                 <div className="mt-5 grid grid-cols-2 gap-3">
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">{(item as any).priceNote ? "Harga Jual" : "Harga Takeover"}</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Harga Takeover</div>
                     <div className="font-serif text-[18px] mt-1">{item.takeover}</div>
-                    {(item as any).priceNote && <div className="text-[9px] opacity-50 mt-1 leading-tight">{(item as any).priceNote}</div>}
                   </div>
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Status</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Cicilan</div>
                     <div className="font-serif text-[18px] mt-1">{item.cicilan}</div>
                   </div>
                 </div>

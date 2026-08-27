@@ -26,18 +26,18 @@ const koleksi = [
     id: 0,
     lokasi: "A.Yani Utara • Denpasar",
     title: "Rumah Siap Huni A.Yani Utara",
-    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - HANYA 1 UNIT",
-    luas: "LT 100m² / LB 65m²",
-    sisaKredit: "3KT • 1KM • Hadap Utara",
-    cicilan: "Siap Huni",
+    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - DIJUAL HANYA 1 UNIT",
+    luas: "LT 100m² / LB 65m² • 3KT • 1KM",
+    sisaKredit: "Siap Huni • Hadap Utara",
+    cicilan: "Akses 4,5m • Listrik 1300W",
     takeover: "Rp 985 Jt",
     priceNote: "Belum termasuk BPHTB & BBN",
     tags: ["SHM", "Siap Huni", "3 Kamar"],
-    discount: "HANYA 1 UNIT !!",
+    discount: "HANYA 1 UNIT ‼",
     grad: "from-[#FFFBEB] to-[#FEF3C7]",
     image: "/griyaelok-1.webp",
     image2: "/griyaelok-2.webp",
-    specs: ["1 Lantai", "Ruang Keluarga", "Dapur", "Carport", "Air Sumur", "Listrik 1300W", "Akses 4,5m"],
+    specs: ["1 Lantai", "Ruang Keluarga", "Dapur", "Carport", "Air Sumur"],
   },
   {
     id: 1,
@@ -50,7 +50,6 @@ const koleksi = [
     tags: ["SHM", "PBG", "SLO"],
     discount: "-32% bawah pasar",
     grad: "from-[#FFEDD5] to-[#FED7AA]",
-    image: "/villa-bomba.webp",
   },
   {
     id: 2,
@@ -63,7 +62,6 @@ const koleksi = [
     tags: ["SHM", "PBG"],
     discount: "-28% bawah pasar",
     grad: "from-[#DCFCE7] to-[#BBF7D0]",
-    image: "/villa-ubud.webp",
   },
   {
     id: 3,
@@ -76,7 +74,6 @@ const koleksi = [
     tags: ["SHM", "Pondok Wisata"],
     discount: "-41% bawah pasar",
     grad: "from-[#DBEAFE] to-[#BFDBFE]",
-    image: "/tanah-bingin.webp",
   },
 ];
 
@@ -358,24 +355,17 @@ export default function App() {
               key={item.id}
               className="group bg-white rounded-[28px] border border-[#EDE8E0] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.10)] hover:-translate-y-1 transition-all duration-300 min-w-0"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#F5F1E8]">
-                {(item as any).image ? (
-                  <img src={(item as any).image} alt={item.title} className="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" />
-                ) : (
-                  <div className={`w-full h-full bg-gradient-to-br ${item.grad} flex items-center justify-center`}>
-                    <div className="w-[64%] h-[56%] bg-white/70 backdrop-blur rounded-[20px] border border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] grid place-items-center">
-                      <div className="text-center"><div className="font-serif text-[18px] leading-none">{item.title.split(" ").slice(0,2).join(" ")}</div><div className="text-[10px] opacity-50 mt-1 tracking-widest uppercase">{item.lokasi}</div></div>
-                    </div>
-                  </div>
-                )}
+              <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${item.grad} flex items-center justify-center`}>
+                <div className="w-[64%] h-[56%] bg-white/70 backdrop-blur rounded-[20px] border border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] grid place-items-center">
+                  <div className="text-center"><div className="font-serif text-[18px] leading-none">{item.title.split(" ").slice(0,2).join(" ")}</div><div className="text-[10px] opacity-50 mt-1 tracking-widest uppercase">{item.lokasi}</div></div>
+                </div>
                 <div className="absolute top-3 left-3 flex gap-2">
                   <span className="bg-[#121212] text-white text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full">Takeover Kredit</span>
                   <span className="bg-white/90 backdrop-blur text-[#121212] text-[11px] font-semibold px-3 py-1 rounded-full inline-flex items-center gap-1 border border-white">
                     <BadgeCheck className="w-3.5 h-3.5 text-[#2A9D8F]" /> Verified
                   </span>
                 </div>
-                <div className="absolute bottom-3 left-3 bg-[#FF6B35] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">{item.discount}</div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 bg-[#FF6B35] text-white text-[11px] font-bold px-3 py-1 rounded-full">{item.discount}</div>
               </div>
 
               <div className="p-5 md:p-6">
@@ -390,12 +380,11 @@ export default function App() {
 
                 <div className="mt-5 grid grid-cols-2 gap-3">
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">{(item as any).priceNote ? "Harga Jual" : "Harga Takeover"}</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Harga Takeover</div>
                     <div className="font-serif text-[18px] mt-1">{item.takeover}</div>
-                    {(item as any).priceNote && <div className="text-[9px] opacity-50 mt-1 leading-tight">{(item as any).priceNote}</div>}
                   </div>
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Status</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Cicilan</div>
                     <div className="font-serif text-[18px] mt-1">{item.cicilan}</div>
                   </div>
                 </div>
