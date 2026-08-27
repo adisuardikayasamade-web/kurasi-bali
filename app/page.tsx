@@ -18,15 +18,30 @@ import {
   Quote,
 } from "lucide-react";
 
-const WA_LINK =
-  "https://wa.me/6285156282660?text=Halo%20Kurasi%20Bali%20%F0%9F%91%8B%20Saya%20mau%20konsultasi%20takeover%20kredit%20properti%20di%20Bali";
+const WA_NUMBER = "6285156282660";
+const getWaLink = (item: any) => {
+  const text = `Halo Kurasi Bali 👋 Saya mau info detail unit ini:
+
+*${item.title}*
+📍 ${item.lokasi}
+${item.subtitle || ""}
+📐 ${item.luas} • ${item.sisaKredit}
+💰 ${item.takeover} ${(item as any).priceNote || ""}
+🏷️ ${(item.tags || []).join(", ")}
+
+Masih available? Saya mau jadwal survei.`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+};
+
+const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Halo Kurasi Bali 👋 Saya mau konsultasi properti di Bali")}`;
+
 
 const koleksi = [
   {
     id: 0,
     lokasi: "A.Yani Utara • Denpasar",
     title: "Rumah Siap Huni A.Yani Utara",
-    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - HANYA 1 UNIT",
+    subtitle: "Jl. Suradipa II, Gg. Uma Dewi - DIJUAL HANYA 1 UNIT",
     luas: "LT 100m² / LB 65m²",
     sisaKredit: "3KT • 1KM • Hadap Utara",
     cicilan: "Siap Huni",
@@ -38,45 +53,7 @@ const koleksi = [
     image: "/griyaelok-1.webp",
     image2: "/griyaelok-2.webp",
     specs: ["1 Lantai", "Ruang Keluarga", "Dapur", "Carport", "Air Sumur", "Listrik 1300W", "Akses 4,5m"],
-  },
-  {
-    id: 1,
-    lokasi: "Umalas • Badung",
-    title: "Villa Bomba Umalas",
-    luas: "250m² / 2BR",
-    sisaKredit: "Sisa 12 tahun",
-    cicilan: "Rp 28jt/bln",
-    takeover: "Rp 2.8 M",
-    tags: ["SHM", "PBG", "SLO"],
-    discount: "-32% bawah pasar",
-    grad: "from-[#FFEDD5] to-[#FED7AA]",
-    image: "/villa-bomba.webp",
-  },
-  {
-    id: 2,
-    lokasi: "Tegallalang • Ubud",
-    title: "Villa Ubud Jungle View",
-    luas: "480m² / 3BR",
-    sisaKredit: "Sisa 9 tahun",
-    cicilan: "Rp 18jt/bln",
-    takeover: "Rp 1.9 M",
-    tags: ["SHM", "PBG"],
-    discount: "-28% bawah pasar",
-    grad: "from-[#DCFCE7] to-[#BBF7D0]",
-    image: "/villa-ubud.webp",
-  },
-  {
-    id: 3,
-    lokasi: "Bingin • Uluwatu",
-    title: "Tanah Bingin Cliff Front",
-    luas: "600m²",
-    sisaKredit: "Sisa 15 tahun",
-    cicilan: "Rp 22jt/bln",
-    takeover: "Rp 3.2 M",
-    tags: ["SHM", "Pondok Wisata"],
-    discount: "-41% bawah pasar",
-    grad: "from-[#DBEAFE] to-[#BFDBFE]",
-    image: "/tanah-bingin.webp",
+    detailWA: "Rumah 1 lantai dengan luas tanah 100m² di kawasan Denpasar Utara. Cocok untuk keluarga kecil maupun investasi. 3 Kamar Tidur, 1 Kamar Mandi, Ruang Keluarga, Dapur, Carport.",
   },
 ];
 
@@ -343,7 +320,7 @@ export default function App() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="inline-flex bg-[#2A9D8F]/10 text-[#2A9D8F] border border-[#2A9D8F]/20 rounded-full px-3 py-1 text-[11px] font-bold tracking-widest uppercase">
-              Koleksi Terbaru • 3 Listing Aktif
+              Koleksi Terbaru • 1 Unit Ready • A.Yani Utara
             </div>
             <h2 className="font-serif text-[36px] md:text-[54px] leading-[0.95] mt-4">Kurasi Minggu Ini.<br />Siap Takeover.</h2>
           </div>
@@ -352,30 +329,23 @@ export default function App() {
           </p>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-3 gap-6 md:gap-7 min-w-0">
+        <div className="mt-10 grid md:grid-cols-1 gap-6 md:gap-7 min-w-0 max-w-[420px] mx-auto md:mx-0">
           {koleksi.map((item) => (
             <div
               key={item.id}
               className="group bg-white rounded-[28px] border border-[#EDE8E0] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.10)] hover:-translate-y-1 transition-all duration-300 min-w-0"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#F5F1E8]">
-                {(item as any).image ? (
-                  <img src={(item as any).image} alt={item.title} className="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" />
-                ) : (
-                  <div className={`w-full h-full bg-gradient-to-br ${item.grad} flex items-center justify-center`}>
-                    <div className="w-[64%] h-[56%] bg-white/70 backdrop-blur rounded-[20px] border border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] grid place-items-center">
-                      <div className="text-center"><div className="font-serif text-[18px] leading-none">{item.title.split(" ").slice(0,2).join(" ")}</div><div className="text-[10px] opacity-50 mt-1 tracking-widest uppercase">{item.lokasi}</div></div>
-                    </div>
-                  </div>
-                )}
+              <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${item.grad} flex items-center justify-center`}>
+                <div className="w-[64%] h-[56%] bg-white/70 backdrop-blur rounded-[20px] border border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] grid place-items-center">
+                  <div className="text-center"><div className="font-serif text-[18px] leading-none">{item.title.split(" ").slice(0,2).join(" ")}</div><div className="text-[10px] opacity-50 mt-1 tracking-widest uppercase">{item.lokasi}</div></div>
+                </div>
                 <div className="absolute top-3 left-3 flex gap-2">
                   <span className="bg-[#121212] text-white text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full">Takeover Kredit</span>
                   <span className="bg-white/90 backdrop-blur text-[#121212] text-[11px] font-semibold px-3 py-1 rounded-full inline-flex items-center gap-1 border border-white">
                     <BadgeCheck className="w-3.5 h-3.5 text-[#2A9D8F]" /> Verified
                   </span>
                 </div>
-                <div className="absolute bottom-3 left-3 bg-[#FF6B35] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">{item.discount}</div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 bg-[#FF6B35] text-white text-[11px] font-bold px-3 py-1 rounded-full">{item.discount}</div>
               </div>
 
               <div className="p-5 md:p-6">
@@ -390,12 +360,11 @@ export default function App() {
 
                 <div className="mt-5 grid grid-cols-2 gap-3">
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">{(item as any).priceNote ? "Harga Jual" : "Harga Takeover"}</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Harga Takeover</div>
                     <div className="font-serif text-[18px] mt-1">{item.takeover}</div>
-                    {(item as any).priceNote && <div className="text-[9px] opacity-50 mt-1 leading-tight">{(item as any).priceNote}</div>}
                   </div>
                   <div className="bg-[#FFFBF5] rounded-[14px] border border-[#EDE8E0] p-3">
-                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Status</div>
+                    <div className="text-[10px] tracking-widest uppercase opacity-50 font-semibold">Cicilan</div>
                     <div className="font-serif text-[18px] mt-1">{item.cicilan}</div>
                   </div>
                 </div>
@@ -409,7 +378,7 @@ export default function App() {
                 </div>
 
                 <a
-                  href={WA_LINK}
+                  href={getWaLink(item)}
                   target="_blank"
                   className="mt-5 flex items-center justify-center gap-2 w-full h-11 rounded-full bg-[#121212] text-white text-[13px] font-semibold hover:bg-black transition"
                 >
